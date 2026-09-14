@@ -1,0 +1,29 @@
+# Environment
+backend/.env
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Node
+frontend/node_modules/
+frontend/dist/
+.vite/
+*.tsbuildinfo
+
+# Docker
+docker-data/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# ML / uploads
+backend/app/uploads/
+*.pt
+*.pkl
