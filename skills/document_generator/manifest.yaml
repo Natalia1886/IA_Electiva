@@ -1,0 +1,4 @@
+name: document_generator
+version: 0.1.0
+input_schema: {content: string, format: string}
+output_schema: {file_path: string}

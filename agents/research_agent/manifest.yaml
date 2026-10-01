@@ -1,0 +1,7 @@
+name: research_agent
+version: 0.1.0
+description: Investiga un tema y produce un resumen con fuentes
+skills_required: [web_search, document_generator]
+permissions: [network_access]
+input_schema: {}
+output_schema: {}

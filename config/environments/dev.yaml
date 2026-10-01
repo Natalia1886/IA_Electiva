@@ -1,0 +1,2 @@
+llm_provider: claude
+log_level: debug

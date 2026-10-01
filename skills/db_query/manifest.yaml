@@ -1,0 +1,5 @@
+name: db_query
+version: 0.1.0
+input_schema: {sql: string}
+output_schema: {rows: array}
+permissions: [db_read]

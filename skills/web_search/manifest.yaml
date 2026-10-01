@@ -1,0 +1,5 @@
+name: web_search
+version: 0.1.0
+input_schema: {query: string}
+output_schema: {results: array}
+rate_limit: 60/min

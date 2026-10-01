@@ -1,0 +1,5 @@
+name: code_executor
+version: 0.1.0
+input_schema: {code: string, language: string}
+output_schema: {stdout: string, stderr: string}
+permissions: [code_execution]

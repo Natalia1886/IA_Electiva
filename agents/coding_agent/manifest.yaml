@@ -1,0 +1,7 @@
+name: coding_agent
+version: 0.1.0
+description: Escribe y ejecuta código para resolver una tarea
+skills_required: [code_executor]
+permissions: [code_execution]
+input_schema: {}
+output_schema: {}
