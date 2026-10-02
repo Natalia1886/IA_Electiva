@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda Religiosa San Cayetano - Sistema Inteligente</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <!-- Barra Superior -->
+    <header class="navbar">
+      <div class="brand">
+        <span class="brand-icon">🕊️</span>
+        <div>
+          <h1>Artículos Religiosos San Cayetano</h1>
+          <p class="subtitle">Gestión de Tienda, Control de Inventario y Recomendaciones con IA</p>
+        </div>
+      </div>
+      <div class="user-control" id="userControl">
+        <div class="user-badge" id="userBadge">
+          <span class="user-role-tag" id="userRoleTag">ADMIN</span>
+          <span class="user-name" id="userName">Administrador</span>
+        </div>
+        <button class="btn btn-outline" id="switchUserBtn" onclick="toggleRoleSwitchModal()">Cambiar Usuario</button>
+      </div>
+    </header>
+
+    <!-- Navegación Principal -->
+    <nav class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('dashboard')">📊 Resumen del Día</button>
+      <button class="tab-btn" onclick="switchTab('sales')">🛒 Nueva Venta</button>
+      <button class="tab-btn" onclick="switchTab('inventory')">📦 Inventario de Artículos</button>
+      <button class="tab-btn admin-only" onclick="switchTab('festivities')">📅 Festividades Religiosas</button>
+      <button class="tab-btn admin-only highlight-tab" onclick="switchTab('recommendations')">🧠 Recomendaciones de Compra IA</button>
+    </nav>
+
+    <!-- Contenedor Principal de Vistas -->
+    <main class="content-container">
+
+      <!-- ================= PESTAÑA: DASHBOARD ================= -->
+      <section id="tab-dashboard" class="tab-view active">
+        <div class="metrics-grid">
+          <div class="metric-card card-sales">
+            <div class="metric-icon">💰</div>
+            <div class="metric-body">
+              <span class="metric-label">Ventas de Hoy</span>
+              <h2 id="dashTodaySales">$0</h2>
+              <span class="metric-sub" id="dashTxCount">0 transacciones registradas</span>
+            </div>
+          </div>
+          <div class="metric-card card-warning">
+            <div class="metric-icon">⚠️</div>
+            <div class="metric-body">
+              <span class="metric-label">Artículos con Stock Bajo</span>
+              <h2 id="dashLowStockCount">0</h2>
+              <span class="metric-sub">Por debajo del mínimo de seguridad</span>
+            </div>
+          </div>
+          <div class="metric-card card-danger">
+            <div class="metric-icon">🚨</div>
+            <div class="metric-body">
+              <span class="metric-label">Artículos Agotados</span>
+              <h2 id="dashOutOfStockCount">0</h2>
+              <span class="metric-sub">Requieren reposición inmediata</span>
+            </div>
+          </div>
+          <div class="metric-card card-ai admin-only">
+            <div class="metric-icon">✨</div>
+            <div class="metric-body">
+              <span class="metric-label">Asesor de Compras IA</span>
+              <h2 id="dashAiRecCount">0</h2>
+              <span class="metric-sub">Sugerencias para próximas festividades</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-columns">
+          <!-- Alertas Críticas -->
+          <div class="panel">
+            <div class="panel-header">
+              <h3>🔔 Alertas de Inventario Urgentes</h3>
+              <span class="badge badge-info">Monitoreo en tiempo real</span>
+            </div>
+            <div class="panel-body" id="dashAlertsList">
+              <p class="empty-state">No hay alertas críticas en este momento.</p>
+            </div>
+          </div>
+
+          <!-- Más Vendidos -->
+          <div class="panel">
+            <div class="panel-header">
+              <h3>⭐ Artículos con Mayor Movimiento</h3>
+              <span class="badge badge-success">Top ventas</span>
+            </div>
+            <div class="panel-body" id="dashTopProductsList">
+              <p class="empty-state">Aún no hay ventas registradas el día de hoy.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PESTAÑA: NUEVA VENTA ================= -->
+      <section id="tab-sales" class="tab-view">
+        <div class="two-column-layout">
+          <!-- Catálogo de selección rápida -->
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Catálogo de Artículos</h3>
+              <div class="search-bar">
+                <input type="text" id="salesSearchInput" placeholder="Buscar vela, virgen, pesebre..." oninput="filterSalesCatalog()">
+              </div>
+            </div>
+            <div class="product-cards-grid" id="salesProductGrid">
+              <!-- Se llena dinámicamente -->
+            </div>
+          </div>
+
+          <!-- Ticket de venta actual -->
+          <div class="panel cart-panel">
+            <div class="panel-header">
+              <h3>Ticket de Venta Actual</h3>
+              <button class="btn btn-sm btn-ghost" onclick="clearCart()">Limpiar Carrito</button>
+            </div>
+            <div class="cart-items-list" id="cartItemsList">
+              <p class="empty-state">Haga clic en un artículo del catálogo para agregarlo a la venta.</p>
+            </div>
+            <div class="cart-footer">
+              <div class="cart-total-row">
+                <span>Total a Cobrar:</span>
+                <span class="cart-total-price" id="cartTotalPrice">$0</span>
+              </div>
+              <div class="form-group">
+                <label>Método de Pago:</label>
+                <select id="paymentMethodSelect" class="form-control">
+                  <option value="EFECTIVO">Efectivo</option>
+                  <option value="NEQUI">Nequi</option>
+                  <option value="DAVIPLATA">Daviplata</option>
+                  <option value="TARJETA">Tarjeta Débito/Crédito</option>
+                </select>
+              </div>
+              <button class="btn btn-primary btn-block btn-lg" onclick="processSale()">
+                ✅ Registrar Venta y Descontar Stock
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PESTAÑA: INVENTARIO ================= -->
+      <section id="tab-inventory" class="tab-view">
+        <div class="panel">
+          <div class="panel-header header-with-actions">
+            <div>
+              <h3>Inventario Completo de Mercancía</h3>
+              <p class="subtitle">Monitoreo de existencias, stock mínimo y control de quiebres</p>
+            </div>
+            <div class="header-actions">
+              <input type="text" id="inventorySearchInput" placeholder="Buscar por nombre o código..." oninput="filterInventoryTable()">
+              <button class="btn btn-primary admin-only" onclick="openNewProductModal()">+ Nuevo Producto</button>
+            </div>
+          </div>
+          <div class="table-container">
+            <table class="data-table" id="inventoryTable">
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Artículo Religioso</th>
+                  <th>Categoría</th>
+                  <th>Precio Unitario</th>
+                  <th>Stock Actual</th>
+                  <th>Stock Mínimo</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody id="inventoryTableBody">
+                <!-- Se llena dinámicamente -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PESTAÑA: FESTIVIDADES ================= -->
+      <section id="tab-festivities" class="tab-view admin-only">
+        <div class="panel">
+          <div class="panel-header header-with-actions">
+            <div>
+              <h3>Festividades Religiosas y Calendario Católico</h3>
+              <p class="subtitle">Fechas especiales (Ibagué, Semana Santa) que elevan la demanda de artículos</p>
+            </div>
+            <button class="btn btn-primary" onclick="openNewFestivityModal()">+ Registrar Festividad</button>
+          </div>
+          <div class="festivities-grid" id="festivitiesList">
+            <!-- Se llena dinámicamente -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PESTAÑA: RECOMENDACIONES IA ================= -->
+      <section id="tab-recommendations" class="tab-view admin-only">
+        <div class="panel">
+          <div class="panel-header header-with-actions">
+            <div>
+              <h3>🧠 Asesor Inteligente de Compras y Abastecimiento</h3>
+              <p class="subtitle">Recomendaciones en lenguaje natural basadas en ventas anteriores, inventario y festividades</p>
+            </div>
+            <button class="btn btn-secondary" onclick="retrainAiModel()">🔄 Reentrenar Modelo con Ventas Recientes</button>
+          </div>
+
+          <div class="ai-banner">
+            <div class="ai-banner-icon">💡</div>
+            <div class="ai-banner-text">
+              <h4>¿Cómo calcula el sistema estas recomendaciones?</h4>
+              <p>El orquestador analiza la <strong>frecuencia</strong> y <strong>recencia</strong> de compras, la proximidad de festividades religiosas (como Semana Santa y Fiestas de Ibagué) y su inventario en bodega. Le sugiere exactamente <strong>qué producto comprar, cuántas unidades encargar y por qué motivo</strong>, previniendo quiebres de stock y evitando acumular mercancía que no rota.</p>
+            </div>
+          </div>
+
+          <div class="recommendations-container" id="recommendationsContainer">
+            <div class="loading-state">Consultando agentes y evaluando inventario con IA...</div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Modal Cambio de Rol / Usuario -->
+    <div id="roleModal" class="modal-overlay">
+      <div class="modal-content">
+        <h3>Seleccionar Usuario de Prueba</h3>
+        <p class="subtitle">Cambie de perfil para verificar los permisos del Administrador y del Vendedor (RF02, RNF04).</p>
+        <div class="role-options">
+          <div class="role-card" onclick="loginAs('admin', 'admin123')">
+            <div class="role-icon">👑</div>
+            <div class="role-info">
+              <h4>Administrador (admin)</h4>
+              <p>Acceso total: gestión de inventario, creación de productos, festividades y recomendaciones de compra con IA.</p>
+            </div>
+          </div>
+          <div class="role-card" onclick="loginAs('vendedor1', 'vendedor123')">
+            <div class="role-icon">🏷️</div>
+            <div class="role-info">
+              <h4>Vendedor (vendedor1)</h4>
+              <p>Acceso operativo: consulta catálogo de productos y registra ventas. Sin acceso a compras ni IA.</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-ghost" onclick="toggleRoleSwitchModal()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Nuevo Producto -->
+    <div id="newProductModal" class="modal-overlay">
+      <div class="modal-content">
+        <h3>Registrar Nuevo Artículo Religioso</h3>
+        <p class="subtitle">Complete los datos requeridos (RF03, RF04, HU02).</p>
+        <form id="newProductForm" onsubmit="handleCreateProduct(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Código Formal:</label>
+              <input type="text" id="prodCode" placeholder="Ej. VEL-004 (opcional)" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Categoría: *</label>
+              <select id="prodCategory" required class="form-control">
+                <option value="Velas">Velas</option>
+                <option value="Imágenes Religiosas">Imágenes Religiosas</option>
+                <option value="Santos">Santos</option>
+                <option value="Pesebres">Pesebres</option>
+                <option value="Crucifijos">Crucifijos</option>
+                <option value="Accesorios">Accesorios y Rosarios</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Nombre del Producto: *</label>
+            <input type="text" id="prodName" required placeholder="Ej. Cirio Virgen Milagrosa 20cm" class="form-control">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Precio de Venta ($): *</label>
+              <input type="number" id="prodPrice" required min="0" step="100" placeholder="Ej. 15000" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Stock Inicial: *</label>
+              <input type="number" id="prodStock" required min="0" value="10" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Stock Mínimo (Alerta): *</label>
+              <input type="number" id="prodStockMin" required min="0" value="5" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Descripción / Observación:</label>
+            <textarea id="prodDesc" rows="2" class="form-control" placeholder="Detalles de tamaño, material o procedencia..."></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-ghost" onclick="closeNewProductModal()">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Guardar Producto</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal Nueva Festividad -->
+    <div id="newFestivityModal" class="modal-overlay">
+      <div class="modal-content">
+        <h3>Registrar Festividad Religiosa</h3>
+        <p class="subtitle">Asocie fechas y el factor de demanda proyectado (RF10, HU06).</p>
+        <form id="newFestivityForm" onsubmit="handleCreateFestivity(event)">
+          <div class="form-group">
+            <label>Nombre de la Festividad: *</label>
+            <input type="text" id="festName" required placeholder="Ej. Fiesta de San Juan en Ibagué" class="form-control">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Fecha Inicio: *</label>
+              <input type="date" id="festStart" required class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Fecha Fin: *</label>
+              <input type="date" id="festEnd" required class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Factor de Demanda: *</label>
+              <input type="number" id="festFactor" step="0.1" min="1.0" max="5.0" value="1.8" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Categorías Impactadas:</label>
+            <input type="text" id="festCategories" placeholder="Ej. Velas, Santos, Crucifijos" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Descripción / Notas:</label>
+            <textarea id="festDesc" rows="2" class="form-control" placeholder="Contexto de la celebración en la ciudad..."></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-ghost" onclick="closeNewFestivityModal()">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Guardar Festividad</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

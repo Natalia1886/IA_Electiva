@@ -1,2 +1,7 @@
-llm_provider: claude
+environment: production
+app_name: "Sistema Inteligente Tienda Religiosa"
+database_url: "sqlite:///tienda_religiosa.db"
+llm_provider: local_heuristic
 log_level: info
+token_expire_hours: 12
+cors_origins: ["https://tiendareligiosa.com"]

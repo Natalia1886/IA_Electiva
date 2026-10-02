@@ -1,5 +1,6 @@
 active_skills:
-  - web_search
-  - code_executor
-  - db_query
-  - document_generator
+  - db_repository
+  - product_segmentation
+  - demand_forecaster
+  - nl_explainer
+  - stock_monitor

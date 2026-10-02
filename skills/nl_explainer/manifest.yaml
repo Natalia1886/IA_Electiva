@@ -1,0 +1,9 @@
+name: nl_explainer
+version: 1.0.0
+description: Generador de justificaciones de compra en lenguaje natural comprensible para tenderos y administradores sin formación técnica
+permissions: [nlg_formatting]
+input_schema:
+  recommendations: array
+  festivities: array
+output_schema:
+  explained_recommendations: array

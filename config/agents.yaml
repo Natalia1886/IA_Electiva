@@ -1,3 +1,4 @@
 active_agents:
-  - research_agent
-  - coding_agent
+  - purchase_advisor_agent
+  - inventory_agent
+  - sales_agent

@@ -1,0 +1,9 @@
+name: db_repository
+version: 1.0.0
+description: Repositorio transaccional y auditable de base de datos para la tienda de artículos religiosos
+permissions: [db_read, db_write, inventory_atomic_update]
+input_schema:
+  action: string
+  params: object
+output_schema:
+  result: object

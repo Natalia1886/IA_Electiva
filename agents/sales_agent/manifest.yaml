@@ -1,0 +1,15 @@
+name: sales_agent
+version: 1.0.0
+description: Agente de análisis de ventas que consolida cierres diarios, métricas de ingresos y productos con mayor movimiento
+skills_required:
+  - db_repository
+permissions:
+  - db_read
+  - sales_report_read
+input_schema:
+  date: string
+output_schema:
+  total_sales_amount: number
+  transaction_count: integer
+  average_ticket: number
+  top_products: array
