@@ -1,0 +1,144 @@
+<mxGraphModel>
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="u" value="Usuarios" style="swimlane;startSize=24;fillColor=#f5f5f5;strokeColor=#999999;html=1;" vertex="1" parent="1">
+      <mxGeometry x="40" y="40" width="170" height="190" as="geometry"/>
+    </mxCell>
+    <mxCell id="A" value="Administrador&lt;br&gt;Gestiona catálogo, festividades, usuarios,&lt;br&gt;dashboard y recomendaciones" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="u">
+      <mxGeometry x="15" y="35" width="140" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="V" value="Vendedor&lt;br&gt;Registra ventas y consulta&lt;br&gt;productos e inventario" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="u">
+      <mxGeometry x="15" y="115" width="140" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="f" value="Frontend - React 18 + Vite + TypeScript" style="swimlane;startSize=28;fillColor=#e8f4f8;strokeColor=#6c8ebf;html=1;" vertex="1" parent="1">
+      <mxGeometry x="230" y="40" width="180" height="280" as="geometry"/>
+    </mxCell>
+    <mxCell id="VIEWS" value="Vistas: Login, Productos, Ventas,&lt;br&gt;Inventario, Dashboard,&lt;br&gt;Festividades, Recomendaciones, Usuarios" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="f">
+      <mxGeometry x="15" y="38" width="150" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="ROUTER" value="React Router" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="f">
+      <mxGeometry x="15" y="118" width="150" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="AUTHCTX" value="AuthContext&lt;br&gt;Guarda JWT y rol" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="f">
+      <mxGeometry x="15" y="198" width="150" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="b" value="Backend - Python 3.11 + FastAPI + SQLAlchemy async" style="swimlane;startSize=28;fillColor=#e8f5e9;strokeColor=#82b366;html=1;" vertex="1" parent="1">
+      <mxGeometry x="430" y="40" width="180" height="440" as="geometry"/>
+    </mxCell>
+    <mxCell id="API" value="app/main.py&lt;br&gt;Mounts routers + error handlers" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="b">
+      <mxGeometry x="15" y="38" width="150" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="ROUTES" value="Routers: auth, users, products, categories,&lt;br&gt;sales, inventory, holidays,&lt;br&gt;ai_recommendations, reports" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="b">
+      <mxGeometry x="15" y="118" width="150" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="SERVICES" value="Services: products, sales,&lt;br&gt;inventory, holiday, daily_summary" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="b">
+      <mxGeometry x="15" y="198" width="150" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="CORE" value="core: security (JWT+bcrypt),&lt;br&gt;permissions (matriz de roles),&lt;br&gt;stock_status, exceptions" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="b">
+      <mxGeometry x="15" y="278" width="150" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="MODELS" value="SQLAlchemy async models:&lt;br&gt;User, Product, Category, Sale,&lt;br&gt;SaleItem, StockMovement, Holiday, Digitization" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="b">
+      <mxGeometry x="15" y="358" width="150" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="ai" value="Servicios IA/ML (app/services/ai)" style="swimlane;startSize=28;fillColor=#fff0e6;strokeColor=#d6b656;html=1;" vertex="1" parent="1">
+      <mxGeometry x="630" y="40" width="180" height="440" as="geometry"/>
+    </mxCell>
+    <mxCell id="SEG" value="segmentation&lt;br&gt;Clustering RFM - scikit-learn" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="ai">
+      <mxGeometry x="15" y="38" width="150" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="REC" value="recommendations&lt;br&gt;Producto, cantidad y motivo" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="ai">
+      <mxGeometry x="15" y="118" width="150" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="HENG" value="holiday_engine&lt;br&gt;Factor de demanda por festividad" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="ai">
+      <mxGeometry x="15" y="198" width="150" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="NL" value="natural_language&lt;br&gt;Explicación en lenguaje natural" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="ai">
+      <mxGeometry x="15" y="278" width="150" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="VIEW" value="digitizer / vision y utilidades&lt;br&gt;scikit-learn + pandas + numpy" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="ai">
+      <mxGeometry x="15" y="358" width="150" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="d" value="Datos" style="swimlane;startSize=28;fillColor=#fff9e6;strokeColor=#d6b656;html=1;" vertex="1" parent="1">
+      <mxGeometry x="830" y="40" width="170" height="140" as="geometry"/>
+    </mxCell>
+    <mxCell id="DB" value="PostgreSQL 16&lt;br&gt;asyncpg" style="shape=cylinder3;whiteSpace=wrap;html=1;" vertex="1" parent="d">
+      <mxGeometry x="20" y="50" width="130" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="LLM_API" value="API IA Generativa&lt;br&gt;(openai - LLM)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+      <mxGeometry x="830" y="275" width="170" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="dev" value="Dev" style="swimlane;startSize=28;fillColor=#fce4ec;strokeColor=#d66c8e;html=1;" vertex="1" parent="1">
+      <mxGeometry x="430" y="510" width="570" height="150" as="geometry"/>
+    </mxCell>
+    <mxCell id="TEST" value="Pytest - test_api, test_critical_flows" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="dev">
+      <mxGeometry x="15" y="38" width="160" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="SEED" value="app/seed.py - datos iniciales" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="dev">
+      <mxGeometry x="195" y="38" width="160" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="TRAIN" value="scripts/train_segmenter.py&lt;br&gt;Reentrenamiento del modelo" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="dev">
+      <mxGeometry x="375" y="38" width="160" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="e_VIEWS_R" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="f" source="VIEWS" target="ROUTER">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e_R_AC" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="f" source="ROUTER" target="AUTHCTX">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e_API_ROUTES" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="b" source="API" target="ROUTES">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e_ROUTES_SERV" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="b" source="ROUTES" target="SERVICES">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e_SERV_CORE" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="b" source="SERVICES" target="CORE">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e_SERV_MODELS" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="b" source="SERVICES" target="MODELS">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e_API_SERV" value="Sirve dashboard/resúmenes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;" edge="1" parent="b" source="API" target="SERVICES">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e_REC_SEG" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="ai" source="REC" target="SEG">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e_REC_HENG" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="ai" source="REC" target="HENG">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e_REC_NL" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="ai" source="REC" target="NL">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e_A_VIEWS" value="Usa" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="A" target="VIEWS">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e_V_VIEWS" value="Usa" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="V" target="VIEWS">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e_AC_API" value="Llamadas REST/JSON" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="AUTHCTX" target="API">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e_MODELS_DB" value="asyncpg" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="MODELS" target="DB">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e_API_REC" value="Solicita recomendaciones" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="API" target="REC">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e_NL_LLM" value="Genera explicación natural" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="NL" target="LLM_API">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e_SEG_TRAIN" value="Entrena/carga modelo" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="SEG" target="TRAIN">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e_TRAIN_DB" value="Lee histórico de ventas" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="TRAIN" target="DB">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e_SERV_TEST" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;" edge="1" parent="1" source="SERVICES" target="TEST">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e_SEED_DB" value="Pobla catálogo y usuarios" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="SEED" target="DB">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>
