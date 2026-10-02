@@ -1,0 +1,10 @@
+name: demand_forecaster
+version: 1.0.0
+description: Algoritmo de cálculo de necesidad de compra cruzando stock actual, tasa de venta y festividades
+permissions: [forecasting_calc]
+input_schema:
+  segmented_products: array
+  window_days: integer
+  horizon_days: integer
+output_schema:
+  recommendations: array

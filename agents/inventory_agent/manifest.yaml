@@ -1,0 +1,13 @@
+name: inventory_agent
+version: 1.0.0
+description: Agente auditor de inventario encargado de vigilar niveles de existencias y generar alertas de stock bajo y agotado
+skills_required:
+  - db_repository
+  - stock_monitor
+permissions:
+  - db_read
+  - alerts_read
+input_schema: {}
+output_schema:
+  summary: object
+  alerts: array

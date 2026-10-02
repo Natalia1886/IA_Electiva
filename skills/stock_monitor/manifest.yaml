@@ -1,0 +1,10 @@
+name: stock_monitor
+version: 1.0.0
+description: Monitorea niveles de inventario y genera alertas tempranas de productos agotados o con stock bajo
+permissions: [stock_read]
+input_schema:
+  products: array
+output_schema:
+  alerts: array
+  out_of_stock_count: integer
+  low_stock_count: integer

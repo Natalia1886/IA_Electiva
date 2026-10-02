@@ -1,0 +1,11 @@
+name: product_segmentation
+version: 1.0.0
+description: Modelo ML no supervisado para segmentación de productos por Recencia, Frecuencia, Varianza y Festividades
+permissions: [ml_train, ml_inference]
+input_schema:
+  products: array
+  sales_history: array
+  festivities: array
+  window_days: integer
+output_schema:
+  segmented_products: array
