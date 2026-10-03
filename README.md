@@ -60,45 +60,6 @@ MilanFramework/
 
 ---
 
-## 🚀 Cómo Ejecutar el Proyecto
-
-### 1. Iniciar el Servidor API y la Interfaz Web
-Ejecute el siguiente comando en la raíz del proyecto:
-
-```bash
-uvicorn interfaces.api.main:app --reload
-```
-
-Abra su navegador en: **`http://localhost:8000`**
-
-La interfaz web cargará automáticamente el dashboard, el catálogo de ventas, el inventario y las recomendaciones de IA.
-
-#### Credenciales de Prueba (RF01, RF02):
-- **Administrador**: Usuario `admin` | Contraseña `admin123`
-- **Vendedor**: Usuario `vendedor1` | Contraseña `vendedor123`
-
----
-
-### 2. Ejecutar la Consola Interactiva (CLI)
-Si prefiere interactuar por terminal:
-
-```bash
-python -m interfaces.cli.main
-```
-
-Permite consultar alertas, registrar ventas de prueba con descuento atómico y correr las recomendaciones de compra en lenguaje natural.
-
----
-
-### 3. Ejecutar las Pruebas y Evaluaciones
-Para comprobar el correcto funcionamiento de los modelos de Machine Learning, el cálculo de demanda y el agente de compras:
-
-```bash
-python evaluations/run_tests.py
-```
-
----
-
 ## 📊 Cobertura de Requerimientos del Sistema
 
 - **RF01 & RF02**: Autenticación con contraseña cifrada y separación estricta de roles (**Admin** vs **Vendedor**).
