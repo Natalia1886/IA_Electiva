@@ -1,1 +1,1 @@
-#Punto de entrada por línea de comandos (CLI) para la tienda religiosa (MilanFramework).
+"""Punto de entrada por línea de comandos hacia el orquestador."""

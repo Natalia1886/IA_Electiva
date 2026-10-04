@@ -1,1 +1,1 @@
-"""Ejecuta el plan de agentes y skills, maneja excepciones y trazabilidad."""
+"""Ejecuta el plan del planner, maneja reintentos y fallbacks."""

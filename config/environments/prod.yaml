@@ -1,6 +1,6 @@
 environment: production
 app_name: "Sistema Inteligente Tienda Religiosa"
-database_url: "sqlite:///tienda_religiosa.db"
+database_url: "postgresql://milan_user:milan_password@localhost:5432/milan_prod"
 llm_provider: local_heuristic
 log_level: info
 token_expire_hours: 12

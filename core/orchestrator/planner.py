@@ -1,1 +1,1 @@
-"""Descompone tareas complejas del negocio religioso en subtareas delegables."""
+"""Descompone tareas complejas en subtareas delegables."""
