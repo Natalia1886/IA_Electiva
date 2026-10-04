@@ -1,1 +1,1 @@
-"""Tracer para registrar trazas de ejecución de agentes y llamadas a skills."""
+"""Traza cada decisión del orquestador y cada llamada a skill/LLM."""

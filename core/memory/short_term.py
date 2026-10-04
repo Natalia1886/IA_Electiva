@@ -1,1 +1,1 @@
-"""Memoria a corto plazo (volátil, contexto de la sesión actual)."""
+#Memoria a corto plazo (volátil, contexto de la sesión actual)
