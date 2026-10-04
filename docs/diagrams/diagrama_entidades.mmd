@@ -1,0 +1,309 @@
+erDiagram
+
+    ROLES {
+        int id PK
+        string name UK "ADMIN, VENDEDOR"
+        string description
+        boolean is_active
+    }
+
+    USERS {
+        uuid id PK
+        int role_id FK
+        string username UK
+        string email UK
+        string password_hash "PBKDF2-HMAC-SHA256, RNF03"
+        string full_name
+        boolean is_active
+        datetime last_login_at
+        datetime created_at
+    }
+
+    SESSIONS {
+        uuid id PK
+        uuid user_id FK
+        string refresh_token_hash
+        string ip_address
+        string user_agent
+        boolean is_revoked
+        datetime expires_at
+        datetime created_at
+    }
+
+    CHAT_SESSIONS {
+        uuid id PK
+        uuid user_id FK
+        string title
+        string channel "chat_ui, cli, api"
+        string context_summary "resumen volátil"
+        int message_count
+        datetime started_at
+        datetime last_activity_at
+        datetime ended_at
+    }
+
+    CHAT_MESSAGES {
+        uuid id PK
+        uuid chat_session_id FK
+        string role "user, assistant, system, tool"
+        text content
+        jsonb tool_calls "RF: trazabilidad de skills invocadas"
+        int prompt_tokens
+        int completion_tokens
+        datetime created_at
+    }
+
+    CATEGORIES {
+        int id PK
+        string name UK
+        string description
+        boolean is_active
+    }
+
+    PRODUCTS {
+        int id PK
+        int category_id FK
+        string code UK
+        string name
+        string description
+        numeric price "RF: no negativo"
+        int stock_actual "columna leida por stock_monitor.py"
+        int stock_minimo "columna leida por stock_monitor.py"
+        boolean is_active "filtro active_only"
+        datetime created_at
+        datetime updated_at
+    }
+
+    INVENTORY_MOVEMENTS {
+        bigint id PK
+        int product_id FK
+        int sale_id FK
+        int user_id FK
+        string movement_type "ENTRADA, SALIDA, AJUSTE"
+        int quantity
+        int stock_before
+        int stock_after
+        string reason "RNF08 auditoria"
+        datetime created_at
+    }
+
+    INVENTORY_ALERTS {
+        bigint id PK
+        int product_id FK
+        int trace_id FK
+        string alert_type "AGOTADO, STOCK_BAJO"
+        string severity "CRITICA, ALTA"
+        string message
+        string status "OPEN, ACK, RESOLVED"
+        int acknowledged_by FK
+        datetime detected_at
+        datetime resolved_at
+    }
+
+    SALES {
+        int id PK
+        uuid user_id FK
+        string document_number UK
+        decimal total_amount
+        int transaction_count "derivado para RF08"
+        string payment_method
+        datetime sold_at
+        datetime created_at
+    }
+
+    SALE_ITEMS {
+        bigint id PK
+        int sale_id FK
+        int product_id FK
+        int quantity
+        decimal unit_price
+        decimal subtotal
+    }
+
+    FESTIVITIES {
+        int id PK
+        string name "consumido por purchase_advisor"
+        string description
+        date start_date
+        date end_date
+        numeric demand_factor "multiplicador RF10"
+        boolean is_active
+    }
+
+    FESTIVITY_PRODUCTS {
+        int festivity_id PK,FK
+        int product_id PK,FK
+        numeric demand_factor "factor por producto"
+    }
+
+    AGENTS {
+        int id PK
+        string name UK "purchase_advisor_agent"
+        string version "manifest.yaml"
+        string manifest_path
+        boolean is_active "config/agents.yaml"
+        jsonb required_skills
+        jsonb permissions
+    }
+
+    SKILLS {
+        int id PK
+        string name UK "db_repository"
+        string version "manifest.yaml"
+        string manifest_path
+        boolean is_active "config/skills.yaml"
+        jsonb permissions
+    }
+
+    ML_MODELS {
+        int id PK
+        string name "product_segmentation"
+        string algorithm "KMeans, RFV-F"
+        string version
+        boolean is_active "RNF06 reentrenamiento en caliente"
+        jsonb hyperparameters "n_clusters, window_days"
+        datetime trained_at
+    }
+
+    MODEL_TRAINING_RUNS {
+        bigint id PK
+        int ml_model_id FK
+        uuid triggered_by FK "RF14 solo admin"
+        string status "PENDING, RUNNING, SUCCESS, FAILED"
+        int sample_size
+        jsonb metrics "silhouette, inertia"
+        text log
+        datetime started_at
+        datetime finished_at
+    }
+
+    PRODUCT_SEGMENTS {
+        bigint id PK
+        int ml_model_id FK
+        int product_id FK
+        int segment_label
+        string segment_name
+        numeric recency "RF11"
+        numeric frequency "RF11"
+        numeric variance "RF11"
+        numeric festivity_affinity "RF11"
+        datetime computed_at
+    }
+
+    PURCHASE_RECOMMENDATIONS {
+        bigint id PK
+        int product_id FK
+        int festivity_id FK
+        uuid requested_by FK "RF14 solo admin"
+        int suggested_quantity
+        numeric estimated_cost
+        string priority "URGENTE, ALTA, MEDIA"
+        text natural_language_reason "RF13 via nl_explainer"
+        jsonb raw_forecast "salida de demand_forecaster"
+        string status "NEW, APPROVED, REJECTED"
+        datetime created_at
+    }
+
+    MEMORY_ENTRIES {
+        bigint id PK
+        uuid user_id FK
+        uuid chat_session_id FK
+        int agent_id FK
+        string memory_scope "SHORT_TERM, LONG_TERM"
+        string memory_key "sales_summary_2026-01-15"
+        jsonb content "payload memory_manager.remember"
+        float importance_score
+        int access_count
+        datetime expires_at "TTL solo SHORT_TERM"
+        datetime created_at
+    }
+
+    TRACES {
+        uuid id PK
+        uuid parent_trace_id FK "anidamiento de spans"
+        uuid chat_session_id FK
+        uuid user_id FK
+        int agent_id FK
+        int skill_id FK
+        string traceable_type "ORCHESTRATOR, AGENT, SKILL, LLM"
+        string operation "router, planner, run"
+        string status "OK, ERROR, FALLBACK"
+        jsonb input_payload
+        jsonb output_payload
+        text error_trace
+        int duration_ms
+        datetime started_at
+        datetime finished_at
+    }
+
+    LLM_CALLS {
+        bigint id PK
+        uuid trace_id FK
+        int agent_id FK
+        uuid chat_session_id FK
+        string provider "provider_router"
+        string model "local_heuristic"
+        int prompt_tokens
+        int completion_tokens
+        int total_tokens
+        decimal cost_usd
+        int latency_ms
+        boolean cache_hit
+        datetime created_at
+    }
+
+    COST_LEDGER {
+        bigint id PK
+        uuid user_id FK
+        int agent_id FK
+        date period_date "agregacion diaria"
+        int total_calls
+        int total_tokens
+        decimal total_cost_usd
+        decimal budget_limit_usd
+        string alert_status "WITHIN, WARNING, EXCEEDED"
+    }
+
+    ROLES ||--o{ USERS : "asigna rol"
+    USERS ||--o{ SESSIONS : "autentica mediante"
+    USERS ||--o{ CHAT_SESSIONS : "inicia"
+    CHAT_SESSIONS ||--o{ CHAT_MESSAGES : "contiene"
+    USERS ||--o{ SALES : "registra venta"
+    USERS ||--o{ INVENTORY_MOVEMENTS : "ejecuta movimiento"
+    USERS ||--o{ MODEL_TRAINING_RUNS : "dispara reentrenamiento"
+    USERS ||--o{ PURCHASE_RECOMMENDATIONS : "solicita"
+    USERS ||--o{ TRACES : "origina"
+    USERS ||--o{ COST_LEDGER : "consume"
+    USERS ||--o{ MEMORY_ENTRIES : "posee"
+
+    CATEGORIES ||--o{ PRODUCTS : "clasifica"
+    PRODUCTS ||--o{ SALE_ITEMS : "vendido en"
+    PRODUCTS ||--o{ INVENTORY_MOVEMENTS : "genera"
+    PRODUCTS ||--o{ INVENTORY_ALERTS : "produce"
+    PRODUCTS ||--o{ PRODUCT_SEGMENTS : "clasificado en"
+    PRODUCTS ||--o{ FESTIVITY_PRODUCTS : "asociado a"
+    PRODUCTS ||--o{ PURCHASE_RECOMMENDATIONS : "recomendado"
+
+    SALES ||--|{ SALE_ITEMS : "contiene minimo uno"
+    SALES ||--o{ INVENTORY_MOVEMENTS : "descuenta stock atomico RNF05"
+    INVENTORY_ALERTS }o--|| TRACES : "detectada por"
+
+    FESTIVITIES ||--o{ FESTIVITY_PRODUCTS : "incluye"
+    FESTIVITIES ||--o{ PURCHASE_RECOMMENDATIONS : "motiva"
+    FESTIVITY_PRODUCTS }o--|| PRODUCTS : "referencia"
+
+    AGENTS ||--o{ TRACES : "ejecuta"
+    AGENTS ||--o{ MEMORY_ENTRIES : "escribe"
+    AGENTS ||--o{ LLM_CALLS : "consume"
+    AGENTS ||--o{ COST_LEDGER : "agregado en"
+    AGENTS }o--o{ SKILLS : "declara skills_required"
+    SKILLS ||--o{ TRACES : "invocada en"
+
+    ML_MODELS ||--o{ MODEL_TRAINING_RUNS : "se entrena con"
+    ML_MODELS ||--o{ PRODUCT_SEGMENTS : "produce"
+
+    CHAT_SESSIONS ||--o{ MEMORY_ENTRIES : "contexto de"
+    CHAT_SESSIONS ||--o{ TRACES : "agrupa"
+    CHAT_SESSIONS ||--o{ LLM_CALLS : "consume"
+    TRACES ||--o{ LLM_CALLS : "detalla costo de"
+    TRACES ||--o{ TRACES : "contiene subspan"

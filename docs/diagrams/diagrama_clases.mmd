@@ -1,0 +1,365 @@
+classDiagram
+    direction TB
+
+    class BaseAgent {
+        <<abstract>>
+        +str name
+        +run(task) Dict
+    }
+
+    class BaseSkill {
+        <<abstract>>
+        +str name
+        +run(params) Dict
+    }
+
+    class AgentRegistry {
+        <<singleton>>
+        +dict AGENT_REGISTRY
+        +register_agent(agent_cls)
+        +get_agent(name)
+        +list_active() List
+    }
+
+    class SkillRegistry {
+        <<singleton>>
+        +dict SKILL_REGISTRY
+        +register_skill(skill_cls)
+        +get_skill(name)
+        +list_active() List
+    }
+
+    class Orchestrator {
+        +str environment
+        +handle_request(intent) Dict
+        +shutdown()
+    }
+
+    class Router {
+        +route(intent) str
+        +AGENT_REGISTRY agents
+    }
+
+    class Planner {
+        +build_plan(task) List
+        +estimate_steps(task) int
+    }
+
+    class Executor {
+        +int max_retries
+        +execute(plan) Dict
+        +fallback(plan) Dict
+    }
+
+    class MemoryManager {
+        +remember(key, value, persistent) int
+        +recall(key) Dict
+        +recall_recent(scope, limit) List
+        +forget(key) bool
+        +summarize() Dict
+    }
+
+    class ShortTermMemory {
+        <<volatile>>
+        +int ttl_seconds
+        +put(key, value) None
+        +get(key) Dict
+        +purge_expired() int
+    }
+
+    class LongTermMemory {
+        +put(key, value, importance) int
+        +search(query, top_k) List
+        +consolidate() int
+    }
+
+    class LLMGateway {
+        +generate(prompt, context) Dict
+        +complete(task) Dict
+    }
+
+    class ProviderRouter {
+        +str active_provider
+        +route_prompt(prompt) str
+        +available_providers() List
+    }
+
+    class CostTracker {
+        +record_call(tokens_in, tokens_out, model) Decimal
+        +get_summary(period) Dict
+        +check_budget(limit) str
+    }
+
+    class Tracer {
+        +uuid start_span(traceable_type, operation) str
+        +end_span(trace_id, status) None
+        +get_trace(trace_id) Dict
+    }
+
+    class LogManager {
+        +get_logger(name) Logger
+        +set_level(level) None
+    }
+
+    class DatabaseManager {
+        +str engine_url
+        +get_session() Session
+        +transaction() UnitOfWork
+        +health_check() bool
+    }
+
+    class UnitOfWork {
+        +commit() None
+        +rollback() None
+    }
+
+    class AuthService {
+        +hash_password(pwd) str
+        +verify_password(pwd, hashed) bool
+        +create_access_token(user) str
+        +decode_token(token) Dict
+    }
+
+    class PermissionChecker {
+        +dict ROLE_PERMISSIONS
+        +check_permission(role, permission) bool
+        +is_admin(role) bool
+    }
+
+    class Guardrails {
+        +validate_product_data(data) Dict
+        +validate_sale_items(items) List
+    }
+
+    class BusinessValidationError {
+        <<exception>>
+        +str message
+        +str field
+    }
+
+    class PurchaseAdvisorAgent {
+        +str name
+        +int horizon_days
+        +int window_days
+        +run(task) Dict
+    }
+
+    class InventoryAgent {
+        +str name
+        +run(task) Dict
+    }
+
+    class SalesAgent {
+        +str name
+        +run(task) Dict
+    }
+
+    class DbRepositorySkill {
+        +str name
+        +run(params) Dict
+    }
+
+    class ProductSegmentationSkill {
+        +str name
+        +run(params) Dict
+        +retrain() Dict
+    }
+
+    class DemandForecasterSkill {
+        +str name
+        +run(params) Dict
+    }
+
+    class NlExplainerSkill {
+        +str name
+        +run(params) Dict
+    }
+
+    class StockMonitorSkill {
+        +str name
+        +run(params) Dict
+    }
+
+    class ProductSegmentationModel {
+        +int n_clusters
+        +bool is_fitted
+        +extract_features(products, sales, festivities, window) DataFrame
+        +train_and_segment(df) List
+    }
+
+    class MemoryEntry {
+        +bigint id
+        +uuid user_id
+        +uuid chat_session_id
+        +int agent_id
+        +str memory_scope
+        +str memory_key
+        +dict content
+        +datetime expires_at
+    }
+
+    class Trace {
+        +uuid id
+        +uuid parent_trace_id
+        +str traceable_type
+        +str operation
+        +str status
+        +int duration_ms
+        +datetime started_at
+    }
+
+    class LLMCall {
+        +bigint id
+        +uuid trace_id
+        +str provider
+        +str model
+        +int prompt_tokens
+        +int completion_tokens
+        +decimal cost_usd
+    }
+
+    class User {
+        +uuid id
+        +str username
+        +str password_hash
+        +str role
+        +bool is_active
+    }
+
+    class Product {
+        +int id
+        +str code
+        +str name
+        +decimal price
+        +int stock_actual
+        +int stock_minimo
+        +bool is_active
+    }
+
+    class Sale {
+        +int id
+        +uuid user_id
+        +decimal total_amount
+        +datetime sold_at
+    }
+
+    class SaleItem {
+        +bigint id
+        +int sale_id
+        +int product_id
+        +int quantity
+        +decimal unit_price
+    }
+
+    class InventoryMovement {
+        +bigint id
+        +int product_id
+        +int sale_id
+        +str movement_type
+        +int quantity
+        +int stock_before
+        +int stock_after
+    }
+
+    class Festivity {
+        +int id
+        +str name
+        +date start_date
+        +date end_date
+        +decimal demand_factor
+    }
+
+    class MovementType {
+        <<enumeration>>
+        ENTRADA
+        SALIDA
+        AJUSTE
+    }
+
+    class MemoryScope {
+        <<enumeration>>
+        SHORT_TERM
+        LONG_TERM
+    }
+
+    class TraceableType {
+        <<enumeration>>
+        ORCHESTRATOR
+        AGENT
+        SKILL
+        LLM
+    }
+
+    BaseAgent <|-- PurchaseAdvisorAgent
+    BaseAgent <|-- InventoryAgent
+    BaseAgent <|-- SalesAgent
+
+    BaseSkill <|-- DbRepositorySkill
+    BaseSkill <|-- ProductSegmentationSkill
+    BaseSkill <|-- DemandForecasterSkill
+    BaseSkill <|-- NlExplainerSkill
+    BaseSkill <|-- StockMonitorSkill
+
+    AgentRegistry ..> BaseAgent : registra
+    SkillRegistry ..> BaseSkill : registra
+
+    Orchestrator *-- Router
+    Orchestrator *-- Planner
+    Orchestrator *-- Executor
+
+    Router ..> AgentRegistry : consulta
+    Executor ..> AgentRegistry : instancia agente
+    Executor ..> SkillRegistry : instancia skill
+    Executor ..> Tracer : emite spans
+    Executor ..> Guardrails : valida entradas
+    Executor ..> PermissionChecker : verifica rol
+
+    PurchaseAdvisorAgent ..> SkillRegistry : resuelve 4 skills
+    PurchaseAdvisorAgent --> MemoryManager : persiste recomendaciones
+    PurchaseAdvisorAgent ..> LogManager : logs
+    InventoryAgent --> MemoryManager : persiste alertas
+    InventoryAgent ..> LogManager : logs
+    SalesAgent --> MemoryManager : persiste resumen diario
+    SalesAgent ..> LogManager : logs
+
+    PurchaseAdvisorAgent *-- ProductSegmentationModel
+
+    DbRepositorySkill *-- DatabaseManager
+    ProductSegmentationSkill *-- ProductSegmentationModel
+
+    MemoryManager *-- ShortTermMemory
+    MemoryManager *-- LongTermMemory
+    MemoryManager ..> Tracer : traza escrituras
+
+    ShortTermMemory ..> MemoryEntry : persiste
+    LongTermMemory ..> MemoryEntry : persiste
+
+    LLMGateway *-- ProviderRouter
+    LLMGateway *-- CostTracker
+
+    ProviderRouter ..> Tracer : traza decision
+    CostTracker *-- LLMCall : registra
+    Tracer ..> Trace : persiste
+
+    DatabaseManager *-- UnitOfWork
+    DatabaseManager ..> Product : mapea
+    DatabaseManager ..> Sale : mapea
+    DatabaseManager ..> SaleItem : mapea
+    DatabaseManager ..> InventoryMovement : mapea
+    DatabaseManager ..> Festivity : mapea
+    DatabaseManager ..> User : mapea
+
+    AuthService ..> User : verifica credenciales
+    AuthService ..> PermissionChecker : delega rol
+    Guardrails ..> BusinessValidationError : lanza
+    Guardrails ..> Product : valida
+    Guardrails ..> SaleItem : valida
+
+    MovementType ..> InventoryMovement : tipa
+    MemoryScope ..> MemoryEntry : tipa
+    TraceableType ..> Trace : tipa
+
+    Sale "1" *-- "1..*" SaleItem
+    Product "1" *-- "1..*" SaleItem
+    SaleItem "0..1" ..> InventoryMovement : origina
+    Festivity "0..*" ..> Product : faktor demanda
