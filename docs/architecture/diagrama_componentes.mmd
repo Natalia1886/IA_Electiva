@@ -1,0 +1,69 @@
+graph TD
+    subgraph IF["1. Capa de Interfaces — interfaces/"]
+        API["FastAPI REST<br/>interfaces/api/main.py"]
+        CHAT["Chat UI Web<br/>interfaces/chat_ui/"]
+        CLI["CLI Interactivo<br/>interfaces/cli/"]
+    end
+
+    subgraph ORCH["2. Orquestador — core/orchestrator/"]
+        ROUTER["Router de Tareas<br/>router.py: intent → agente"]
+        PLANNER["Planner<br/>planner.py: plan de pasos"]
+        EXECUTOR["Executor<br/>executor.py: ejecución + trazas"]
+    end
+
+    subgraph AG["3. Agentes IA — agents/ · core/agent_base/"]
+        PUR["purchase_advisor_agent<br/>recomendación de compras"]
+        INV["inventory_agent<br/>alertas de quiebre de stock"]
+        SAL["sales_agent<br/>ventas y cierre diario"]
+    end
+
+    subgraph SK["4. Skills — skills/ · core/skill_base/"]
+        SEG["product_segmentation<br/>ML no supervisado RFV-F"]
+        FC["demand_forecaster<br/>pronóstico de demanda"]
+        NLG["nl_explainer<br/>explicaciones en lenguaje natural"]
+        STM["stock_monitor<br/>umbrales de inventario"]
+        DBREP["db_repository<br/>transacciones ACID y auditoría"]
+    end
+
+    subgraph DBL["5. Capa de Datos — core/database/"]
+        PG[("PostgreSQL<br/>SQLAlchemy 2 + psycopg2<br/>config/environments")]
+    end
+
+    subgraph CROSS["Componentes Transversales — core/"]
+        GW["LLM Gateway<br/>provider_router + cost_tracker"]
+        SEC["Seguridad<br/>JWT + RBAC + guardrails"]
+        MEM["MemoryManager<br/>short_term + long_term"]
+        OBS["Observabilidad<br/>tracer + logger"]
+        REG["Registros Base<br/>AGENT_REGISTRY + SKILL_REGISTRY"]
+    end
+
+    EVAL["evaluations/<br/>agent_benchmarks + skill_tests"]
+
+    CHAT --> API
+    API --> ROUTER
+    CLI --> ROUTER
+    API -. "JWT y RBAC" .-> SEC
+    ROUTER --> PLANNER
+    PLANNER --> EXECUTOR
+    EXECUTOR --> PUR
+    EXECUTOR --> INV
+    EXECUTOR --> SAL
+    EXECUTOR -.-> OBS
+    PUR --> SEG
+    PUR --> FC
+    PUR --> NLG
+    PUR --> DBREP
+    INV --> STM
+    INV --> DBREP
+    SAL --> DBREP
+    DBREP --> PG
+    PUR -.-> GW
+    INV -.-> GW
+    SAL -.-> GW
+    PUR -.-> MEM
+    PUR -.-> REG
+    INV -.-> REG
+    SAL -.-> REG
+    GW -.-> OBS
+    EVAL -.-> AG
+    EVAL -.-> SK
