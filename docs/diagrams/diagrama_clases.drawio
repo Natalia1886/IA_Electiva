@@ -1,0 +1,343 @@
+<mxfile host="app.diagrams.net" type="device">
+  <diagram id="milan-classes" name="Diagrama de Clases">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1400" math="0" shadow="0" adaptiveColors="auto">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="cl_Contratos_Base" value="Contratos Base" style="swimlane;startSize=30;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontStyle=1;align=left;spacingLeft=10;swimlaneFillColor=#ffffff;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="30" y="30" width="1080" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="c_BaseAgent" value="&lt;div style='font-weight:bold;background-color:#999999;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;BaseAgent&lt;/div&gt;&lt;div style='background-color:#eef4fb;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;&lt;&lt;abstract&gt;&gt;&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;&lt;&lt;abstract&gt;&gt;&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str name&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+run(task) Dict&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#999999;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Contratos_Base">
+          <mxGeometry x="20" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_BaseSkill" value="&lt;div style='font-weight:bold;background-color:#999999;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;BaseSkill&lt;/div&gt;&lt;div style='background-color:#eef4fb;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;&lt;&lt;abstract&gt;&gt;&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;&lt;&lt;abstract&gt;&gt;&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str name&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+run(params) Dict&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#999999;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Contratos_Base">
+          <mxGeometry x="290" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_AgentRegistry" value="&lt;div style='font-weight:bold;background-color:#999999;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;AgentRegistry&lt;/div&gt;&lt;div style='background-color:#eef4fb;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;&lt;&lt;singleton&gt;&gt;&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;&lt;&lt;singleton&gt;&gt;&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+dict AGENT_REGISTRY&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+register_agent(agent_cls)&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+get_agent(name) BaseAgent&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+list_active() List&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#999999;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Contratos_Base">
+          <mxGeometry x="560" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_SkillRegistry" value="&lt;div style='font-weight:bold;background-color:#999999;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;SkillRegistry&lt;/div&gt;&lt;div style='background-color:#eef4fb;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;&lt;&lt;singleton&gt;&gt;&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;&lt;&lt;singleton&gt;&gt;&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+dict SKILL_REGISTRY&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+register_skill(skill_cls)&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+get_skill(name) BaseSkill&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+list_active() List&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#999999;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Contratos_Base">
+          <mxGeometry x="830" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="cl_Orquestacion" value="Orquestacion" style="swimlane;startSize=30;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;align=left;spacingLeft=10;swimlaneFillColor=#ffffff;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="30" y="270" width="1080" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Orchestrator" value="&lt;div style='font-weight:bold;background-color:#6c8ebf;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;Orchestrator&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+str environment&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str environment&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+handle_request(intent) Dict&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+shutdown()&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#6c8ebf;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Orquestacion">
+          <mxGeometry x="20" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Router" value="&lt;div style='font-weight:bold;background-color:#6c8ebf;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;Router&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+route(intent) str&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+route(intent) str&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;-dict AGENT_REGISTRY&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#6c8ebf;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Orquestacion">
+          <mxGeometry x="290" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Planner" value="&lt;div style='font-weight:bold;background-color:#6c8ebf;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;Planner&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+build_plan(task) List&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+build_plan(task) List&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+estimate_steps(task) int&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#6c8ebf;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Orquestacion">
+          <mxGeometry x="560" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Executor" value="&lt;div style='font-weight:bold;background-color:#6c8ebf;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;Executor&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+int max_retries&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+int max_retries&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+execute(plan) Dict&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+fallback(plan) Dict&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#6c8ebf;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Orquestacion">
+          <mxGeometry x="830" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="cl_Memoria" value="Memoria" style="swimlane;startSize=30;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;align=left;spacingLeft=10;swimlaneFillColor=#ffffff;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="30" y="510" width="1080" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c_MemoryManager" value="&lt;div style='font-weight:bold;background-color:#82b366;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;MemoryManager&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+remember(key, value, persistent) int&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+remember(key, value, persistent) int&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+recall(key) Dict&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+recall_recent(scope, limit) List&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+forget(key) bool&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+summarize() Dict&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#82b366;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Memoria">
+          <mxGeometry x="20" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_ShortTermMemory" value="&lt;div style='font-weight:bold;background-color:#82b366;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;ShortTermMemory&lt;/div&gt;&lt;div style='background-color:#eef4fb;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;&lt;&lt;volatile&gt;&gt;&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;&lt;&lt;volatile&gt;&gt;&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+int ttl_seconds&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+put(key, value) None&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+get(key) Dict&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+purge_expired() int&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#82b366;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Memoria">
+          <mxGeometry x="290" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_LongTermMemory" value="&lt;div style='font-weight:bold;background-color:#82b366;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;LongTermMemory&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+put(key, value, importance) int&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+put(key, value, importance) int&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+search(query, top_k) List&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+consolidate() int&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#82b366;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Memoria">
+          <mxGeometry x="560" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_MemoryEntry" value="&lt;div style='font-weight:bold;background-color:#82b366;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;MemoryEntry&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#fbfbfb;padding:3px 0;margin:0 -6px -6px -6px;border-top:1px solid #dddddd'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+bigint id&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+uuid user_id&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+uuid chat_session_id&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+int agent_id&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str memory_scope&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str memory_key&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+dict content&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+datetime expires_at&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#82b366;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Memoria">
+          <mxGeometry x="830" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_MemoryScope" value="&lt;div style='font-weight:bold;background-color:#82b366;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;MemoryScope&lt;/div&gt;&lt;div style='background-color:#eef4fb;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;&lt;&lt;enumeration&gt;&gt;&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;&lt;&lt;enumeration&gt;&gt;&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;SHORT_TERM&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;LONG_TERM&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#82b366;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Memoria">
+          <mxGeometry x="20" y="200" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="cl_LLM_Gateway" value="LLM Gateway" style="swimlane;startSize=30;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;align=left;spacingLeft=10;swimlaneFillColor=#ffffff;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="30" y="910" width="1080" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="c_LLMGateway" value="&lt;div style='font-weight:bold;background-color:#d6b656;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;LLMGateway&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+generate(prompt, context) Dict&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+generate(prompt, context) Dict&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+complete(task) Dict&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#d6b656;strokeWidth=2;spacing=0;" vertex="1" parent="cl_LLM_Gateway">
+          <mxGeometry x="20" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_ProviderRouter" value="&lt;div style='font-weight:bold;background-color:#d6b656;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;ProviderRouter&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+str active_provider&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str active_provider&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+route_prompt(prompt) str&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+available_providers() List&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#d6b656;strokeWidth=2;spacing=0;" vertex="1" parent="cl_LLM_Gateway">
+          <mxGeometry x="290" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_CostTracker" value="&lt;div style='font-weight:bold;background-color:#d6b656;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;CostTracker&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+record_call(tokens_in, tokens_out, model) Decimal&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+record_call(tokens_in, tokens_out, model) Decimal&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+get_summary(period) Dict&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+check_budget(limit) str&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#d6b656;strokeWidth=2;spacing=0;" vertex="1" parent="cl_LLM_Gateway">
+          <mxGeometry x="560" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_LLMCall" value="&lt;div style='font-weight:bold;background-color:#d6b656;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;LLMCall&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#fbfbfb;padding:3px 0;margin:0 -6px -6px -6px;border-top:1px solid #dddddd'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+bigint id&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+uuid trace_id&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str provider&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str model&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+int prompt_tokens&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+int completion_tokens&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+decimal cost_usd&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#d6b656;strokeWidth=2;spacing=0;" vertex="1" parent="cl_LLM_Gateway">
+          <mxGeometry x="830" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="cl_Observabilidad" value="Observabilidad" style="swimlane;startSize=30;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;align=left;spacingLeft=10;swimlaneFillColor=#ffffff;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="30" y="1150" width="1080" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Tracer" value="&lt;div style='font-weight:bold;background-color:#9673a6;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;Tracer&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+uuid start_span(traceable_type, operation) str&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+uuid start_span(traceable_type, operation) str&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+end_span(trace_id, status) None&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+get_trace(trace_id) Dict&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#9673a6;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Observabilidad">
+          <mxGeometry x="20" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_LogManager" value="&lt;div style='font-weight:bold;background-color:#9673a6;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;LogManager&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+get_logger(name) Logger&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+get_logger(name) Logger&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+set_level(level) None&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#9673a6;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Observabilidad">
+          <mxGeometry x="290" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Trace" value="&lt;div style='font-weight:bold;background-color:#9673a6;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;Trace&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#fbfbfb;padding:3px 0;margin:0 -6px -6px -6px;border-top:1px solid #dddddd'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+uuid id&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+uuid parent_trace_id&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str traceable_type&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str operation&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str status&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+int duration_ms&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+datetime started_at&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#9673a6;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Observabilidad">
+          <mxGeometry x="560" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_TraceableType" value="&lt;div style='font-weight:bold;background-color:#9673a6;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;TraceableType&lt;/div&gt;&lt;div style='background-color:#eef4fb;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;&lt;&lt;enumeration&gt;&gt;&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;&lt;&lt;enumeration&gt;&gt;&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;ORCHESTRATOR&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;AGENT&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;SKILL&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;LLM&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#9673a6;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Observabilidad">
+          <mxGeometry x="830" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="cl_Seguridad" value="Seguridad" style="swimlane;startSize=30;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;align=left;spacingLeft=10;swimlaneFillColor=#ffffff;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="30" y="1390" width="1080" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="c_AuthService" value="&lt;div style='font-weight:bold;background-color:#b85450;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;AuthService&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+hash_password(pwd) str&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+hash_password(pwd) str&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+verify_password(pwd, hashed) bool&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+create_access_token(user) str&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+decode_token(token) Dict&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#b85450;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Seguridad">
+          <mxGeometry x="20" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_PermissionChecker" value="&lt;div style='font-weight:bold;background-color:#b85450;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;PermissionChecker&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+dict ROLE_PERMISSIONS&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+dict ROLE_PERMISSIONS&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+check_permission(role, permission) bool&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+is_admin(role) bool&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#b85450;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Seguridad">
+          <mxGeometry x="290" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Guardrails" value="&lt;div style='font-weight:bold;background-color:#b85450;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;Guardrails&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+validate_product_data(data) Dict&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+validate_product_data(data) Dict&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+validate_sale_items(items) List&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#b85450;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Seguridad">
+          <mxGeometry x="560" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_BusinessValidationError" value="&lt;div style='font-weight:bold;background-color:#b85450;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;BusinessValidationError&lt;/div&gt;&lt;div style='background-color:#eef4fb;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;&lt;&lt;exception&gt;&gt;&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;&lt;&lt;exception&gt;&gt;&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str message&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str field&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#b85450;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Seguridad">
+          <mxGeometry x="830" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="cl_Persistencia" value="Persistencia" style="swimlane;startSize=30;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;align=left;spacingLeft=10;swimlaneFillColor=#ffffff;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="30" y="1630" width="1080" height="530" as="geometry" />
+        </mxCell>
+        <mxCell id="c_DatabaseManager" value="&lt;div style='font-weight:bold;background-color:#d79b00;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;DatabaseManager&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+str engine_url&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str engine_url&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+get_session() Session&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+transaction() UnitOfWork&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+health_check() bool&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#d79b00;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Persistencia">
+          <mxGeometry x="20" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_UnitOfWork" value="&lt;div style='font-weight:bold;background-color:#d79b00;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;UnitOfWork&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+commit() None&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+commit() None&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+rollback() None&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#d79b00;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Persistencia">
+          <mxGeometry x="290" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_User" value="&lt;div style='font-weight:bold;background-color:#d79b00;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;User&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#fbfbfb;padding:3px 0;margin:0 -6px -6px -6px;border-top:1px solid #dddddd'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+uuid id&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str username&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str password_hash&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str role&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+bool is_active&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#d79b00;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Persistencia">
+          <mxGeometry x="560" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Product" value="&lt;div style='font-weight:bold;background-color:#d79b00;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;Product&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#fbfbfb;padding:3px 0;margin:0 -6px -6px -6px;border-top:1px solid #dddddd'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+int id&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str code&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str name&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+decimal price&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+int stock_actual&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+int stock_minimo&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+bool is_active&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#d79b00;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Persistencia">
+          <mxGeometry x="830" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Sale" value="&lt;div style='font-weight:bold;background-color:#d79b00;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;Sale&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#fbfbfb;padding:3px 0;margin:0 -6px -6px -6px;border-top:1px solid #dddddd'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+int id&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+uuid user_id&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+decimal total_amount&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+datetime sold_at&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#d79b00;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Persistencia">
+          <mxGeometry x="20" y="200" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_SaleItem" value="&lt;div style='font-weight:bold;background-color:#d79b00;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;SaleItem&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#fbfbfb;padding:3px 0;margin:0 -6px -6px -6px;border-top:1px solid #dddddd'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+bigint id&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+int sale_id&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+int product_id&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+int quantity&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+decimal unit_price&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#d79b00;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Persistencia">
+          <mxGeometry x="290" y="200" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_InventoryMovement" value="&lt;div style='font-weight:bold;background-color:#d79b00;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;InventoryMovement&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#fbfbfb;padding:3px 0;margin:0 -6px -6px -6px;border-top:1px solid #dddddd'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+bigint id&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+int product_id&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+int sale_id&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str movement_type&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+int quantity&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+int stock_before&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+int stock_after&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#d79b00;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Persistencia">
+          <mxGeometry x="560" y="200" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_MovementType" value="&lt;div style='font-weight:bold;background-color:#d79b00;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;MovementType&lt;/div&gt;&lt;div style='background-color:#eef4fb;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;&lt;&lt;enumeration&gt;&gt;&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;&lt;&lt;enumeration&gt;&gt;&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;ENTRADA&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;SALIDA&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;AJUSTE&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#d79b00;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Persistencia">
+          <mxGeometry x="830" y="200" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Festivity" value="&lt;div style='font-weight:bold;background-color:#d79b00;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;Festivity&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#fbfbfb;padding:3px 0;margin:0 -6px -6px -6px;border-top:1px solid #dddddd'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+int id&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str name&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+date start_date&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+date end_date&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+decimal demand_factor&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#d79b00;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Persistencia">
+          <mxGeometry x="20" y="360" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="cl_Agentes" value="Agentes" style="swimlane;startSize=30;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;align=left;spacingLeft=10;swimlaneFillColor=#ffffff;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="30" y="2190" width="810" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="c_PurchaseAdvisorAgent" value="&lt;div style='font-weight:bold;background-color:#82b366;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;PurchaseAdvisorAgent&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+str name&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str name&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+int horizon_days&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+int window_days&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+run(task) Dict&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#82b366;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Agentes">
+          <mxGeometry x="20" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_InventoryAgent" value="&lt;div style='font-weight:bold;background-color:#82b366;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;InventoryAgent&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+str name&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str name&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+run(task) Dict&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#82b366;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Agentes">
+          <mxGeometry x="290" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_SalesAgent" value="&lt;div style='font-weight:bold;background-color:#82b366;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;SalesAgent&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+str name&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str name&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+run(task) Dict&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#82b366;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Agentes">
+          <mxGeometry x="560" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="cl_Skills" value="Skills" style="swimlane;startSize=30;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;align=left;spacingLeft=10;swimlaneFillColor=#ffffff;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="30" y="2430" width="1080" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c_DbRepositorySkill" value="&lt;div style='font-weight:bold;background-color:#d6b656;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;DbRepositorySkill&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+str name&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str name&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+run(params) Dict&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#d6b656;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Skills">
+          <mxGeometry x="20" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_ProductSegmentationSkill" value="&lt;div style='font-weight:bold;background-color:#d6b656;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;ProductSegmentationSkill&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+str name&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str name&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+run(params) Dict&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+retrain() Dict&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#d6b656;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Skills">
+          <mxGeometry x="290" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_ProductSegmentationModel" value="&lt;div style='font-weight:bold;background-color:#d6b656;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;ProductSegmentationModel&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+int n_clusters&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+int n_clusters&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+bool is_fitted&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+extract_features(products, sales, festivities, window) DataFrame&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+train_and_segment(df) List&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#d6b656;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Skills">
+          <mxGeometry x="560" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_DemandForecasterSkill" value="&lt;div style='font-weight:bold;background-color:#d6b656;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;DemandForecasterSkill&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+str name&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str name&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+run(params) Dict&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#d6b656;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Skills">
+          <mxGeometry x="830" y="40" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_NlExplainerSkill" value="&lt;div style='font-weight:bold;background-color:#d6b656;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;NlExplainerSkill&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+str name&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str name&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+run(params) Dict&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#d6b656;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Skills">
+          <mxGeometry x="20" y="200" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_StockMonitorSkill" value="&lt;div style='font-weight:bold;background-color:#d6b656;color:#ffffff;margin:-6px -6px 4px -6px;padding:4px 6px;font-size:11px'&gt;StockMonitorSkill&lt;/div&gt;&lt;div style='background-color:#f7f7f7;font-style:italic;padding:2px 4px;margin:-6px -6px 2px -6px;text-align:center;font-size:10px'&gt;+str name&lt;/div&gt;&lt;div style='font-family:monospace;font-size:10px;background-color:#ffffff;padding:3px 0;margin:0 -6px 3px -6px'&gt;&lt;div style='text-align:left;padding-left:4'&gt;+str name&lt;/div&gt;&lt;div style='text-align:left;padding-left:4'&gt;+run(params) Dict&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#d6b656;strokeWidth=2;spacing=0;" vertex="1" parent="cl_Skills">
+          <mxGeometry x="290" y="200" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="cr1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=block;endFill=0;" edge="1" parent="1" source="c_BaseAgent" target="c_PurchaseAdvisorAgent">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=block;endFill=0;" edge="1" parent="1" source="c_BaseAgent" target="c_InventoryAgent">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=block;endFill=0;" edge="1" parent="1" source="c_BaseAgent" target="c_SalesAgent">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=block;endFill=0;" edge="1" parent="1" source="c_BaseSkill" target="c_DbRepositorySkill">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=block;endFill=0;" edge="1" parent="1" source="c_BaseSkill" target="c_ProductSegmentationSkill">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=block;endFill=0;" edge="1" parent="1" source="c_BaseSkill" target="c_DemandForecasterSkill">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=block;endFill=0;" edge="1" parent="1" source="c_BaseSkill" target="c_NlExplainerSkill">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=block;endFill=0;" edge="1" parent="1" source="c_BaseSkill" target="c_StockMonitorSkill">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='registra';" edge="1" parent="1" source="c_AgentRegistry" target="c_BaseAgent">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='registra';" edge="1" parent="1" source="c_SkillRegistry" target="c_BaseSkill">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;" edge="1" parent="1" source="c_Orchestrator" target="c_Router">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;" edge="1" parent="1" source="c_Orchestrator" target="c_Planner">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;" edge="1" parent="1" source="c_Orchestrator" target="c_Executor">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr14" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='consulta';" edge="1" parent="1" source="c_Router" target="c_AgentRegistry">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr15" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='instancia agente';" edge="1" parent="1" source="c_Executor" target="c_AgentRegistry">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr16" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='instancia skill';" edge="1" parent="1" source="c_Executor" target="c_SkillRegistry">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr17" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='emite spans';" edge="1" parent="1" source="c_Executor" target="c_Tracer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr18" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='valida entradas';" edge="1" parent="1" source="c_Executor" target="c_Guardrails">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr19" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='verifica rol';" edge="1" parent="1" source="c_Executor" target="c_PermissionChecker">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr20" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='resuelve 4 skills';" edge="1" parent="1" source="c_PurchaseAdvisorAgent" target="c_SkillRegistry">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr21" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;edgeLabel='persiste recomendaciones';" edge="1" parent="1" source="c_PurchaseAdvisorAgent" target="c_MemoryManager">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr22" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='logs';" edge="1" parent="1" source="c_PurchaseAdvisorAgent" target="c_LogManager">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr23" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;edgeLabel='persiste alertas';" edge="1" parent="1" source="c_InventoryAgent" target="c_MemoryManager">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr24" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='logs';" edge="1" parent="1" source="c_InventoryAgent" target="c_LogManager">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr25" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;edgeLabel='persiste resumen diario';" edge="1" parent="1" source="c_SalesAgent" target="c_MemoryManager">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr26" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='logs';" edge="1" parent="1" source="c_SalesAgent" target="c_LogManager">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr27" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;" edge="1" parent="1" source="c_PurchaseAdvisorAgent" target="c_ProductSegmentationModel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr28" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;" edge="1" parent="1" source="c_ProductSegmentationSkill" target="c_ProductSegmentationModel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr29" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;" edge="1" parent="1" source="c_DbRepositorySkill" target="c_DatabaseManager">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr30" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;" edge="1" parent="1" source="c_MemoryManager" target="c_ShortTermMemory">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr31" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;" edge="1" parent="1" source="c_MemoryManager" target="c_LongTermMemory">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr32" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='traza escrituras';" edge="1" parent="1" source="c_MemoryManager" target="c_Tracer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr33" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='persiste';" edge="1" parent="1" source="c_ShortTermMemory" target="c_MemoryEntry">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr34" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='persiste';" edge="1" parent="1" source="c_LongTermMemory" target="c_MemoryEntry">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr35" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;" edge="1" parent="1" source="c_LLMGateway" target="c_ProviderRouter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr36" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;" edge="1" parent="1" source="c_LLMGateway" target="c_CostTracker">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr37" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='traza decision';" edge="1" parent="1" source="c_ProviderRouter" target="c_Tracer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr38" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;edgeLabel='registra';" edge="1" parent="1" source="c_CostTracker" target="c_LLMCall">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr39" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='persiste';" edge="1" parent="1" source="c_Tracer" target="c_Trace">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr40" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;" edge="1" parent="1" source="c_DatabaseManager" target="c_UnitOfWork">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr41" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='mapea ORM';" edge="1" parent="1" source="c_DatabaseManager" target="c_Product">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr42" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='mapea ORM';" edge="1" parent="1" source="c_DatabaseManager" target="c_Sale">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr43" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='mapea ORM';" edge="1" parent="1" source="c_DatabaseManager" target="c_SaleItem">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr44" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='mapea ORM';" edge="1" parent="1" source="c_DatabaseManager" target="c_InventoryMovement">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr45" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='mapea ORM';" edge="1" parent="1" source="c_DatabaseManager" target="c_Festivity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr46" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='mapea ORM';" edge="1" parent="1" source="c_DatabaseManager" target="c_User">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr47" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='verifica credenciales';" edge="1" parent="1" source="c_AuthService" target="c_User">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr48" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='delega rol';" edge="1" parent="1" source="c_AuthService" target="c_PermissionChecker">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr49" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='lanza';" edge="1" parent="1" source="c_Guardrails" target="c_BusinessValidationError">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr50" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='valida';" edge="1" parent="1" source="c_Guardrails" target="c_Product">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr51" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='valida';" edge="1" parent="1" source="c_Guardrails" target="c_SaleItem">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr52" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='tipa';" edge="1" parent="1" source="c_MemoryScope" target="c_MemoryEntry">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr53" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='tipa';" edge="1" parent="1" source="c_TraceableType" target="c_Trace">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr54" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='tipa';" edge="1" parent="1" source="c_MovementType" target="c_InventoryMovement">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr55" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;" edge="1" parent="1" source="c_Sale" target="c_SaleItem">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr56" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;" edge="1" parent="1" source="c_Product" target="c_SaleItem">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr57" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;dashed=1;edgeLabel='origina';" edge="1" parent="1" source="c_SaleItem" target="c_InventoryMovement">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr58" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#666666;fontSize=9;labelBackgroundColor=#ffffff;endArrow=open;edgeLabel='factor demanda';" edge="1" parent="1" source="c_Festivity" target="c_Product">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cllegend" value="&lt;b&gt;Relaciones&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:10px'&gt;&amp;lt;|-- hereda (extends)  ·  *-- composicion&lt;br&gt;..&amp;gt; dependencia (uso puntual)  ·  --&amp;gt; asociacion&lt;br&gt;&lt;br&gt;&lt;b&gt;Convención de campos&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:10px'&gt;Los agentes leen stock_actual / stock_minimo en español&lt;br&gt;(stock_monitor.py); los manifests usan inglés.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=middle;spacingLeft=12;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="30" y="2830" width="460" height="110" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
